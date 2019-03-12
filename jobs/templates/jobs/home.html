@@ -1,0 +1,58 @@
+{% extends 'djangoportfolio/base.html' %} {% block title %}{{ block.super }} -
+Blog {% endblock %} {% block navigation %}{{ block.super }}{% endblock %}
+{%block main %} {% load staticfiles %}
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Thor.</h1>
+      <p class="lead text-muted">
+        "Hey, hey! We know each other! He's a friend from work! Where have you
+        been? Everybody thought you were dead! So much has happened since I last
+        saw you. I lost my hammer...like, yesterday so that's still pretty
+        fresh. Loki, he's alive! Can you believe it? He's up there. Hey Loki!
+        Look who it is!"
+      </p>
+      <img src="{% static 'face1.jpg' %}" alt="Thor" class="mb-1" /><br />
+      <p>
+        <a href="mailto:Thor Odinson" class="btn btn-success my-2"
+          >send a raven</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for job in jobs.all %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img
+              src="{{ job.image.url }}"
+              class="bd-placeholder-img card-img-top img-fluid"
+              height="225"
+            />
+            <div class="card-body">
+              <p class="card-text">{{ job.summary }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <form action="http://{{ job.link }}">
+                    <input
+                      type="submit"
+                      class="btn btn-sm btn-outline-secondary"
+                      value="See"
+                    />
+                  </form>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %} {% block footer %}{{ block.super }} {% endblock %}

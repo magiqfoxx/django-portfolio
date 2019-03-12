@@ -1,0 +1,23 @@
+{% extends 'djangoportfolio/base.html' %} {% block title %}{{ block.super }} -
+Blog {% endblock %} {% block navigation %}{{ block.super }}{% endblock %}
+{%block main %}
+<main role="main">
+  <div class="container" style="max-width:70vw; margin:0 auto">
+    <h1 class="text-center pt-5">Blog</h1>
+    <br />
+    <br />
+    <h2>Latest posts</h2>
+    <hr />
+    <div class="blog-posts">
+      {% for post in posts.all %}
+      <a href="/blog/{{ post.id }}"
+        ><h3>{{ post.title }}</h3></a
+      >
+      <h4>{{ post.pub_date }}</h4>
+      <img src="{{ post.image.url }}" class="img-fluid" />
+      <p>{{ post.summary }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %} {% block footer %}{{ block.super }} {% endblock %}

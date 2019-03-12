@@ -1,0 +1,16 @@
+{% extends 'djangoportfolio/base.html' %} {% block title %}{{ block.super }} -
+Blog {% endblock %} {% block navigation %}{{ block.super }}{% endblock %}
+{%block main %}
+<main role="main">
+  <div
+    class="container"
+    style="max-width:70vw; margin:0 auto; text-align: center"
+  >
+    <h1 class="text-center pt-5">{{ post.title }}</h1>
+    <br />
+    <br />
+    <img src="{{ post.image.url }}" class="mb-2" /><br />
+    {{ post.body }}
+  </div>
+</main>
+{% endblock %} {% block footer %}{{ block.super }} {% endblock %}
